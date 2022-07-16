@@ -1,11 +1,8 @@
 /** @jsx h */
-import { ComponentChild, h } from "preact";
+import { h, JSX } from "preact";
 import { apply, tw } from "@twind";
 
-interface CenterProps {
-  children: ComponentChild;
-  className?: string;
-}
+type CenterProps = JSX.HTMLAttributes<HTMLDivElement>
 
 const center = apply`absolute inset-0 flex justify-center items-center`;
 
