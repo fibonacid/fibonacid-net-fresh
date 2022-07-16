@@ -10,7 +10,7 @@ interface LoginFormProps {
 export default function LoginForm(props: LoginFormProps) {
   const { password } = props;
   return (
-    <form>
+    <form action="/api/login">
       <Avatar />
       <div className={tw`p-2`} />
       <input
