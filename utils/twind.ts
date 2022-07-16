@@ -7,6 +7,7 @@ export const config: Configuration = {
   theme: {
     colors: {
       "black": "#121212",
+      white: "#fff"
     },
   },
 };
