@@ -14,7 +14,7 @@ export default function LoginForm(props: LoginFormProps) {
       <Avatar />
       <div className={tw`p-2`} />
       <input
-        className={tw`block text-center leading-loose`}
+        className={tw`block text-center leading-loose bg-[#000]`}
         name="password"
         type="password"
         placeholder={`Type "${password}" to enter`}
