@@ -4,15 +4,16 @@ import { tw } from "@twind";
 import Avatar from "./Avatar.tsx";
 import Button from "./Button.tsx";
 import Input from "./Input.tsx";
+import Form, { FormProps } from "./Form.tsx";
 
-interface LoginFormProps {
+interface LoginFormProps extends Pick<FormProps, "onSubmit"> {
   password: string;
 }
 
 export default function LoginForm(props: LoginFormProps) {
-  const { password } = props;
+  const { password, onSubmit } = props;
   return (
-    <form action="/api/login">
+    <Form action="/api/login" onSubmit={onSubmit}>
       <Avatar />
       <div className={tw`p-2`} />
       <Input
@@ -23,6 +24,6 @@ export default function LoginForm(props: LoginFormProps) {
       />
       <div className={tw`p-2`} />
       <Button className={tw`w-full`}>Submit</Button>
-    </form>
+    </Form>
   );
 }
