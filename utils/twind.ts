@@ -5,9 +5,12 @@ export const config: Configuration = {
   darkMode: "class",
   mode: "silent",
   theme: {
+    fontFamily: {
+      sans: ["Comic Mono", "sans-serif"]
+    },
     colors: {
       "black": "#121212",
-      white: "#fff"
+      white: "#fff",
     },
   },
 };

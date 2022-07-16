@@ -1,0 +1,10 @@
+@font-face {
+    font-family: "Comic Mono";
+    src: url("/fonts/ComicMono.woff");
+}
+
+@font-face {
+    font-family: "Comic Mono";
+    src: url("/fonts/ComicMono-Bold.woff");
+    font-weight: bold;
+}
