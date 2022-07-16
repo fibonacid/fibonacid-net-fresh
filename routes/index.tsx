@@ -9,7 +9,7 @@ export default function Home() {
   return (
     <Layout>
       <Center className={tw`font-sans bg-black flex`}>
-        <LoginForm password="hello" />
+        <LoginForm />
       </Center>
     </Layout>
   );

@@ -1,29 +1,25 @@
 /** @jsx h */
-import { h, JSX } from "preact";
+import { h } from "preact";
 import { tw } from "@twind";
 import Avatar from "./Avatar.tsx";
-import Button from "./Button.tsx";
-import Input from "./Input.tsx";
-import Form, { FormProps } from "./Form.tsx";
+import Form, { FormInput, FormProps, FormSubmit } from "./Form.tsx";
 
-interface LoginFormProps extends Pick<FormProps, "onSubmit"> {
-  password: string;
-}
+type LoginFormProps = Pick<FormProps, "onSubmit" | "className">
 
 export default function LoginForm(props: LoginFormProps) {
-  const { password, onSubmit } = props;
+  const { className, onSubmit } = props;
   return (
-    <Form action="/api/login" onSubmit={onSubmit}>
+    <Form className={className} action="/api/login" onSubmit={onSubmit}>
       <Avatar />
       <div className={tw`p-2`} />
-      <Input
+      <FormInput
         className={tw`block text-center leading-loose bg-[#000]`}
-        name="password"
-        type="password"
-        placeholder={`Type "${password}" to enter`}
+        name="word"
+        type="word"
+        placeholder={`Type anything to enter`}
       />
       <div className={tw`p-2`} />
-      <Button className={tw`w-full`}>Submit</Button>
+      <FormSubmit className={tw`w-full`} />
     </Form>
   );
 }

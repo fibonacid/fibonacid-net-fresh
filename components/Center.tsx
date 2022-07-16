@@ -2,7 +2,7 @@
 import { h, JSX } from "preact";
 import { apply, tw } from "@twind";
 
-type CenterProps = JSX.HTMLAttributes<HTMLDivElement>
+type CenterProps = JSX.HTMLAttributes<HTMLDivElement>;
 
 const center = apply`absolute inset-0 flex justify-center items-center`;
 

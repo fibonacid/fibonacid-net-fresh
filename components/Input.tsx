@@ -2,7 +2,7 @@
 import { h, JSX } from "preact";
 import { apply, tw } from "@twind";
 
-type InputProps = JSX.HTMLAttributes<HTMLInputElement>;
+export type InputProps = JSX.HTMLAttributes<HTMLInputElement>;
 
 const input = apply`block text-center leading-loose bg-[#000]`;
 
