@@ -2,6 +2,7 @@
 import { h } from "preact";
 import { tw } from "@twind";
 import Avatar from "./Avatar.tsx";
+import Button from "./Button.tsx";
 
 interface LoginFormProps {
   password: string;
@@ -19,6 +20,8 @@ export default function LoginForm(props: LoginFormProps) {
         type="password"
         placeholder={`Type "${password}" to enter`}
       />
+      <div className={tw`p-2`} />
+      <Button className={tw`w-full`}>Submit</Button>
     </form>
   );
 }

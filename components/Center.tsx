@@ -1,13 +1,13 @@
 /** @jsx h */
 import { ComponentChild, h } from "preact";
-import { tw, apply } from "@twind";
+import { apply, tw } from "@twind";
 
 interface CenterProps {
   children: ComponentChild;
   className?: string;
 }
 
-const center = apply`absolute inset-0 flex justify-center items-center`
+const center = apply`absolute inset-0 flex justify-center items-center`;
 
 export default function Center(props: CenterProps) {
   const { children, className } = props;
