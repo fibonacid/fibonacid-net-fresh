@@ -6,7 +6,7 @@ export const config: Configuration = {
   mode: "silent",
   theme: {
     fontFamily: {
-      sans: ["Comic Mono", "sans-serif"]
+      sans: ["Comic Mono", "sans-serif"],
     },
     colors: {
       "black": "#121212",

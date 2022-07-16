@@ -1,20 +1,18 @@
 /** @jsx h */
-import { Head, asset } from "$fresh/runtime.ts"
-import { Fragment, h } from "preact";
+import { h } from "preact";
 import { tw } from "@twind";
+import Layout from "../components/Layout.tsx";
 import LoginForm from "../components/LoginForm.tsx";
 
 export default function Home() {
   return (
-    <Fragment>
-      <Head>
-        <link rel="stylesheet" href={asset("/fonts.css")}></link>
-      </Head>
+    <Layout>
       <div
-        class={tw`font-sans absolute inset-0 bg-black flex justify-center items-center`}
+        class={tw
+          `font-sans absolute inset-0 bg-black flex justify-center items-center`}
       >
         <LoginForm password="hello" />
       </div>
-    </Fragment>
+    </Layout>
   );
 }
