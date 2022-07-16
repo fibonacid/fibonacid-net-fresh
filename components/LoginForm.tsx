@@ -15,6 +15,7 @@ export default function LoginForm(props: LoginFormProps) {
       <div className={tw`p-2`} />
       <input
         className={tw("block text-center leading-loose bg-[#000] text-white")}
+        name="password"
         type="password"
         placeholder={`Type "${password}" to enter`}
       />
