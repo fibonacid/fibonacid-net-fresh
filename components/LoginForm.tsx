@@ -18,6 +18,7 @@ export default function LoginForm(props: LoginFormProps) {
         name="word"
         type="word"
         placeholder={`Type anything to enter`}
+        required
       />
       <Spacer className={tw`p-2`} />
       <FormSubmit className={tw`w-full`} />
