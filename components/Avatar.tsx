@@ -1,8 +1,8 @@
 /** @jsx h */
 import { apply, tw } from "@twind";
 import { useImperativeHandle, useRef } from "preact/hooks";
-import { h, Ref,  } from "preact";
-import { forwardRef } from 'preact/compat';
+import { h, Ref } from "preact";
+import { forwardRef } from "preact/compat";
 
 export interface AvatarProps {
   className?: string;
@@ -27,8 +27,8 @@ function Avatar(props: AvatarProps, ref: Ref<AvatarRef>) {
   const container = useRef<HTMLDivElement>(null);
 
   useImperativeHandle(ref, () => ({
-    hello: () => console.log("hello")
-  }))
+    hello: () => console.log("hello"),
+  }));
 
   return (
     <div ref={container} className={tw(avatar, className)}>

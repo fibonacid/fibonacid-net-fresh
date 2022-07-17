@@ -1,5 +1,6 @@
 /** @jsx h */
 import { h } from "preact";
+import { tw } from "@twind";
 import { useEffect, useRef } from "preact/hooks";
 import Cursor, { CursorProps, CursorRef } from "./Cursor.tsx";
 
@@ -19,5 +20,5 @@ export function MouseCursor(props: MouseCursorProps) {
     };
   }, []);
 
-  return <Cursor ref={ref} {...props} />;
+  return <Cursor ref={ref} className={tw(``)} />;
 }
