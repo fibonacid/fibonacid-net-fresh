@@ -1,8 +1,8 @@
 /** @jsx h */
 import { apply, tw } from "@twind";
 import { h } from "preact";
-import { useState } from "preact/hooks";
-import Avatar from "../components/Avatar.tsx";
+import { useEffect, useRef, useState } from "preact/hooks";
+import Avatar, { AvatarRef } from "../components/Avatar.tsx";
 import FadeInList from "../components/FadeInList.tsx";
 import Form, { FormInput, FormProps, FormSubmit } from "../components/Form.tsx";
 import Spacer from "../components/Spacer.tsx";
@@ -20,6 +20,12 @@ const form = apply`
 export default function LoginForm(props: LoginFormProps) {
   const { className, onSubmit } = props;
   const [timeline] = useState(() => gsap.timeline());
+  const avatar = useRef<AvatarRef>(null);
+
+  useEffect(() => {
+    avatar.current?.hello();
+  }, []);
+
   return (
     <Form
       className={tw(form, className)}
@@ -32,7 +38,7 @@ export default function LoginForm(props: LoginFormProps) {
         position={"-=50%"}
       >
         <div>
-          <Avatar />
+          <Avatar ref={avatar} />
           <Spacer className={tw`p-4`} />
         </div>
         <div>
