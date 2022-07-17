@@ -7,6 +7,6 @@ export const handler: Handlers = {
     if (word) {
       return Response.redirect("http://localhost:8000/" + word);
     }
-    return Response.error()
+    return Response.error();
   },
 };

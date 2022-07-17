@@ -12,7 +12,7 @@ export const config: Configuration = {
       black: "#000",
       dark: "#121212",
       white: "#fff",
-      gray: "gray" 
+      gray: "gray",
     },
   },
 };
