@@ -5,7 +5,7 @@ import { useLayoutEffect, useRef } from "preact/hooks";
 export interface FadeInProps {
   children: ComponentChild;
   timeline: GSAPTimeline;
-  vars?: GSAPTimelineVars;
+  vars?: gsap.TweenVars;
   position?: gsap.Position;
 }
 
