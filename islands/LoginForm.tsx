@@ -1,9 +1,9 @@
 /** @jsx h */
 import { apply, tw } from "@twind";
 import { h } from "preact";
-import Avatar from "./Avatar.tsx";
-import Form, { FormInput, FormProps, FormSubmit } from "./Form.tsx";
-import Spacer from "./Spacer.tsx";
+import Avatar from "../components/Avatar.tsx";
+import Form, { FormInput, FormProps, FormSubmit } from "../components/Form.tsx";
+import Spacer from "../components/Spacer.tsx";
 
 type LoginFormProps = Pick<FormProps, "onSubmit" | "className">;
 
