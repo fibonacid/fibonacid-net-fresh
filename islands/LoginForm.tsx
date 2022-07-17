@@ -1,9 +1,9 @@
 /** @jsx h */
 import { apply, tw } from "@twind";
 import { h } from "preact";
-import { useEffect, useRef, useState } from "preact/hooks";
-import Avatar, { AvatarRef } from "../components/Avatar.tsx";
-import Cursor, { CursorRef } from "../components/Cursor.tsx";
+import { useState } from "preact/hooks";
+import Avatar from "../components/Avatar.tsx";
+import FadeIn from "../components/FadeIn.tsx";
 import FadeInList from "../components/FadeInList.tsx";
 import Form, { FormInput, FormProps, FormSubmit } from "../components/Form.tsx";
 import { MouseCursor } from "../components/MouseCursor.tsx";
@@ -21,12 +21,17 @@ const form = apply`
 export default function LoginForm(props: LoginFormProps) {
   const { className, onSubmit } = props;
   const [timeline] = useState(() => gsap.timeline());
+  const [word, setWord] = useState<string>();
+  const [showSubmit, setShowSubmit] = useState(false);
 
   return (
     <Form
       className={tw(form, className)}
       action="/api/login"
       onSubmit={onSubmit}
+      onBlur={() => {
+        setShowSubmit(!!word?.length);
+      }}
     >
       <MouseCursor />
       <FadeInList
@@ -45,11 +50,17 @@ export default function LoginForm(props: LoginFormProps) {
             type="word"
             placeholder={`Type anything to enter`}
             required
+            onChange={(event) => setWord(event.currentTarget.value)}
+            value={word}
           />
-          <Spacer className={tw`p-2`} />
         </div>
-        <FormSubmit className={tw`w-full`} />
       </FadeInList>
+      {showSubmit && (
+        <FadeIn timeline={timeline} vars={{ duration: 5 }}>
+          <Spacer className={tw`p-2`} />
+          <FormSubmit className={tw`w-full`} />
+        </FadeIn>
+      )}
     </Form>
   );
 }
