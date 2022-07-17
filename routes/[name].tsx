@@ -7,7 +7,7 @@ import Center from "../components/Center.tsx";
 export default function Greet(props: PageProps) {
   return (
     <Layout>
-      <Center>Password: {props.params.name}</Center>
+      <Center>Word: {props.params.name}</Center>
     </Layout>
   );
 }
