@@ -1,6 +1,6 @@
 /** @jsx h */
 import { apply, tw } from "@twind";
-import { ComponentChildren, h } from "preact";
+import { h } from "preact";
 import { useState } from "preact/hooks";
 import Avatar from "../components/Avatar.tsx";
 import FadeInList from "../components/FadeInList.tsx";
@@ -28,7 +28,7 @@ export default function LoginForm(props: LoginFormProps) {
     >
       <FadeInList
         timeline={timeline}
-        vars={{ scale: 0 }}
+        vars={{ scale: 0, duration: 0.3 }}
         position={"-=50%"}
       >
         <div>
