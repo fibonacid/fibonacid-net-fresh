@@ -56,7 +56,10 @@ export default function LoginForm(props: LoginFormProps) {
         </div>
       </FadeInList>
       {showSubmit && (
-        <FadeIn timeline={timeline} vars={{ duration: 5 }}>
+        <FadeIn
+          timeline={timeline}
+          vars={{ scale: 0, duration: 0.3 }}
+        >
           <Spacer className={tw`p-2`} />
           <FormSubmit className={tw`w-full`} />
         </FadeIn>
