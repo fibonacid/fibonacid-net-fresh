@@ -1,7 +1,7 @@
 /** @jsx h */
 import { apply, tw } from "@twind";
 import { useImperativeHandle, useRef } from "preact/hooks";
-import { h,  } from "preact";
+import { h, Ref,  } from "preact";
 import { forwardRef } from 'preact/compat';
 
 export interface AvatarProps {
@@ -22,7 +22,7 @@ export type AvatarRef = {
   hello: () => void;
 } | null;
 
-export default forwardRef<AvatarRef, AvatarProps>(function Avatar(props, ref) {
+function Avatar(props: AvatarProps, ref: Ref<AvatarRef>) {
   const { className } = props;
   const container = useRef<HTMLDivElement>(null);
 
@@ -38,4 +38,6 @@ export default forwardRef<AvatarRef, AvatarProps>(function Avatar(props, ref) {
       />
     </div>
   );
-})
+}
+
+export default forwardRef(Avatar);
