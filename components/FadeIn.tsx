@@ -1,16 +1,20 @@
 /** @jsx h */
 import { ComponentChild, h } from "preact";
 import { useLayoutEffect, useRef } from "preact/hooks";
+import { tw, apply } from "@twind";
 
 export interface FadeInProps {
   children: ComponentChild;
   timeline: GSAPTimeline;
   vars?: gsap.TweenVars;
   position?: gsap.Position;
+  className?: string;
 }
 
+const container = apply`block`
+
 export default function FadeIn(props: FadeInProps) {
-  const { children, timeline, vars = {}, position } = props;
+  const { className, children, timeline, vars = {}, position } = props;
   const ref = useRef<HTMLSpanElement>(null);
 
   useLayoutEffect(() => {
@@ -22,5 +26,5 @@ export default function FadeIn(props: FadeInProps) {
     }
   }, []);
 
-  return <span ref={ref}>{children}</span>;
+  return <span className={tw(container, className)} ref={ref}>{children}</span>;
 }
