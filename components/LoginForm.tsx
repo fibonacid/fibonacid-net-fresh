@@ -14,7 +14,7 @@ export default function LoginForm(props: LoginFormProps) {
       <Avatar />
       <Spacer className={tw`p-2`} />
       <FormInput
-        className={tw`block text-center leading-loose bg-[#000]`}
+        className={tw`block text-center leading-loose bg-black`}
         name="word"
         type="word"
         placeholder={`Type anything to enter`}
