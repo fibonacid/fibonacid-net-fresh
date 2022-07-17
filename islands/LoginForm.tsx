@@ -31,17 +31,20 @@ export default function LoginForm(props: LoginFormProps) {
         vars={{ scale: 0 }}
         position={"-=50%"}
       >
-        <Avatar />
-        <Spacer className={tw`p-4`} />
-
-        <FormInput
-          className={tw`block text-center leading-loose w-64`}
-          name="word"
-          type="word"
-          placeholder={`Type anything to enter`}
-          required
-        />
-        <Spacer className={tw`p-2`} />
+        <div>
+          <Avatar />
+          <Spacer className={tw`p-4`} />
+        </div>
+        <div>
+          <FormInput
+            className={tw`block text-center leading-loose w-64`}
+            name="word"
+            type="word"
+            placeholder={`Type anything to enter`}
+            required
+          />
+          <Spacer className={tw`p-2`} />
+        </div>
         <FormSubmit className={tw`w-full`} />
       </FadeInList>
     </Form>
