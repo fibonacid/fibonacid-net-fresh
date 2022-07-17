@@ -9,6 +9,5 @@
     "twind/": "https://esm.sh/twind@0.16.17/",
     "gsap": "https://esm.sh/gsap@3.10.4",
     "gsap/": "https://esm.sh/gsap@3.10.4/"
-
   }
 }

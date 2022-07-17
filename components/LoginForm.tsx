@@ -5,7 +5,7 @@ import Avatar from "./Avatar.tsx";
 import Form, { FormInput, FormProps, FormSubmit } from "./Form.tsx";
 import Spacer from "./Spacer.tsx";
 
-type LoginFormProps = Pick<FormProps, "onSubmit" | "className">
+type LoginFormProps = Pick<FormProps, "onSubmit" | "className">;
 
 export default function LoginForm(props: LoginFormProps) {
   const { className, onSubmit } = props;

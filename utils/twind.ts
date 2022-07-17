@@ -9,7 +9,8 @@ export const config: Configuration = {
       sans: ["Comic Mono", "sans-serif"],
     },
     colors: {
-      "black": "#121212",
+      black: "#000",
+      dark: "#121212",
       white: "#fff",
     },
   },

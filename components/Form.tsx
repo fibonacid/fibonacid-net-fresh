@@ -13,13 +13,13 @@ export default function Form(props: FormProps) {
 const input = apply`block`;
 
 export function FormInput(props: InputProps) {
-    const { className, ...rest } = props;
-    return <Input className={tw(input, className)} {...rest} />
+  const { className, ...rest } = props;
+  return <Input className={tw(input, className)} {...rest} />;
 }
 
 const submit = apply`block`;
 
 export function FormSubmit(props: ButtonProps) {
-    const { className, ...rest } = props;
-    return <Button className={tw(submit, className)} {...rest}>Submit</Button>
+  const { className, ...rest } = props;
+  return <Button className={tw(submit, className)} {...rest}>Submit</Button>;
 }
