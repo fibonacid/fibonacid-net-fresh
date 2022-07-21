@@ -23,7 +23,11 @@ rounded-[50%]
 `;
 
 export type CursorRef = {
-  moveTo: (x: number, y: number) => void;
+  move: (x: number, y: number) => void;
+  to: (vars: GSAPTweenVars) => GSAPTween,
+  from: (vars: GSAPTweenVars) => GSAPTween,
+  set: (vars: GSAPTweenVars) => GSAPTween,
+
 } | null;
 
 function Cursor(props: CursorProps, ref: MutableRef<CursorRef>) {
@@ -31,13 +35,22 @@ function Cursor(props: CursorProps, ref: MutableRef<CursorRef>) {
   const container = useRef<HTMLSpanElement>(null);
 
   useImperativeHandle(ref, () => ({
-    moveTo(x, y) {
+    move(x, y) {
       gsap.to(container.current, {
         x: x - WIDTH * 0.5,
         y: y - WIDTH * 0.5,
         duration: 0.05
       });
     },
+    to(vars) {
+      return gsap.to(container.current, vars)
+    },
+    from(vars) {
+      return gsap.from(container.current, vars)
+    },
+    set(vars) {
+      return gsap.set(container.current, vars)
+    }
   }));
 
   return (

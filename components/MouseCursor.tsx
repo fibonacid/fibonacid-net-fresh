@@ -8,11 +8,14 @@ export type MouseCursorProps = CursorProps;
 
 export function MouseCursor(props: MouseCursorProps) {
   const ref = useRef<CursorRef>(null);
+
+  
+
   useEffect(() => {
     const onMouseMove = (event: MouseEvent) => {
       const x = event.clientX;
       const y = event.clientY;
-      ref.current?.moveTo(x, y);
+      ref.current?.move(x, y);
     };
     self.addEventListener("mousemove", onMouseMove);
     return () => {
