@@ -35,6 +35,7 @@ function Cursor(props: CursorProps, ref: MutableRef<CursorRef>) {
       gsap.to(container.current, {
         x: x - WIDTH * 0.5,
         y: y - WIDTH * 0.5,
+        duration: 0.05
       });
     },
   }));
