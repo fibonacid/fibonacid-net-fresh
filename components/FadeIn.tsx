@@ -1,7 +1,7 @@
 /** @jsx h */
 import { ComponentChild, h } from "preact";
 import { useLayoutEffect, useRef } from "preact/hooks";
-import { tw, apply } from "@twind";
+import { apply, tw } from "@twind";
 
 export interface FadeInProps {
   children: ComponentChild;
@@ -11,7 +11,7 @@ export interface FadeInProps {
   className?: string;
 }
 
-const container = apply`block`
+const container = apply`block`;
 
 export default function FadeIn(props: FadeInProps) {
   const { className, children, timeline, vars = {}, position } = props;

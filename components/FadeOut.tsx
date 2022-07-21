@@ -1,7 +1,7 @@
 /** @jsx h */
 import { ComponentChild, h } from "preact";
 import { useEffect, useRef, useState } from "preact/hooks";
-import "../utils/gsap.ts"
+import "../utils/gsap.ts";
 
 export interface FadeOutProps {
   in: boolean;
