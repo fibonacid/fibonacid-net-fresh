@@ -1,11 +1,11 @@
 /** @jsx h */
 import { apply, tw } from "@twind";
 import { h } from "preact";
-import { useCallback, useState } from "preact/hooks";
+import { useRef, useState } from "preact/hooks";
 import Avatar from "../components/Avatar.tsx";
 import FadeIn from "../components/FadeIn.tsx";
 import FadeInList from "../components/FadeInList.tsx";
-import Form, { FormInput, FormProps, FormSubmit } from "../components/Form.tsx";
+import Form, { FormInput, FormSubmit } from "../components/Form.tsx";
 import { MouseCursor } from "../components/MouseCursor.tsx";
 import Spacer from "../components/Spacer.tsx";
 import gsap from "../utils/gsap.ts";
@@ -24,14 +24,25 @@ export default function LoginForm() {
   const [timeline] = useState(() => gsap.timeline());
   const [word, setWord] = useState<string>();
   const [showSubmit, setShowSubmit] = useState(false);
+  const formRef = useRef<HTMLFormElement>(null);
+
   return (
     <Form
+      ref={formRef}
       className={tw(form)}
       action="/api/login"
       onSubmit={(event) => {
         event.preventDefault();
         const { value } = event.currentTarget;
-        redirect(value)
+        if (formRef.current) {
+          gsap.to(formRef.current, {
+            opacity: 0,
+            duration: 0.3,
+            onComplete() {
+              redirect(value)
+            },
+          });
+        }
       }}
       onBlur={() => {
         setShowSubmit(!!word?.length);
