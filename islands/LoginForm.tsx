@@ -8,6 +8,7 @@ import FadeInList from "../components/FadeInList.tsx";
 import Form, { FormInput, FormSubmit } from "../components/Form.tsx";
 import { MouseCursor } from "../components/MouseCursor.tsx";
 import Spacer from "../components/Spacer.tsx";
+import { siteUrl } from "../utils/env.ts";
 import gsap from "../utils/gsap.ts";
 
 const form = apply`
@@ -17,7 +18,9 @@ const form = apply`
 `;
 
 const redirect = (word: string) => {
-  window.location.href = "/api/login?word=" + word;
+  const url = new URL(siteUrl);
+  url.searchParams.append("word", word);
+  window.location.assign(url);
 };
 
 export default function LoginForm() {
