@@ -39,7 +39,7 @@ export default function LoginForm() {
             opacity: 0,
             duration: 0.3,
             onComplete() {
-              redirect(value)
+              redirect(value);
             },
           });
         }
