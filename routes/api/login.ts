@@ -5,7 +5,7 @@ export const handler: Handlers = {
     const url = new URL(req.url);
     const word = url.searchParams.get("word");
     if (word) {
-      return Response.redirect("http://localhost:8000/" + word);
+      return Response.redirect(Deno.env.get("SITE_URL") || "http://localhost:8000/" + word);
     }
     return Response.error();
   },
