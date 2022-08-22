@@ -36,13 +36,12 @@ export default function LoginForm() {
       action="/api/login"
       onSubmit={(event) => {
         event.preventDefault();
-        const { value } = event.currentTarget;
-        if (formRef.current) {
+        if (word) {
           gsap.to(formRef.current, {
             opacity: 0,
             duration: 0.3,
             onComplete() {
-              redirect(value);
+              redirect(word);
             },
           });
         }
