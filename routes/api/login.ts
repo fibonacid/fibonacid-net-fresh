@@ -4,7 +4,6 @@ import { siteUrl } from "../../utils/env.ts";
 export const handler: Handlers = {
   GET(req, _ctx) {
     const url = new URL(req.url);
-    console.log(url);
     const word = url.searchParams.get("word");
     if (word) {
       return Response.redirect(siteUrl + "/" + word);
