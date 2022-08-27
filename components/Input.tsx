@@ -1,6 +1,7 @@
 /** @jsx h */
-import { h, JSX } from "preact";
 import { apply, tw } from "@twind";
+import { h, JSX } from "preact";
+import { forwardRef } from "preact/compat";
 
 export type InputProps = JSX.HTMLAttributes<HTMLInputElement>;
 
@@ -15,12 +16,15 @@ const input = apply`
   rounded-md
 `;
 
-export default function Input(props: InputProps) {
-  const { className, ...rest } = props;
-  return (
-    <input
-      className={tw(input, className)}
-      {...rest}
-    />
-  );
-}
+export default forwardRef<HTMLInputElement, InputProps>(
+  function Input(props, ref) {
+    const { className, ...rest } = props;
+    return (
+      <input
+        {...rest}
+        ref={ref}
+        className={tw(input, className)}
+      />
+    );
+  },
+);

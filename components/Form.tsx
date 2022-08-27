@@ -15,14 +15,22 @@ export default forwardRef(Form);
 
 const input = apply`block`;
 
-export function FormInput(props: InputProps) {
-  const { className, ...rest } = props;
-  return <Input className={tw(input, className)} {...rest} />;
-}
+export const FormInput = forwardRef<HTMLInputElement, InputProps>(
+  function FormInput(props, ref) {
+    const { className, ...rest } = props;
+    return <Input {...rest} ref={ref} className={tw(input, className)} />;
+  },
+);
 
 const submit = apply`block`;
 
-export function FormSubmit(props: ButtonProps) {
-  const { className, ...rest } = props;
-  return <Button className={tw(submit, className)} {...rest}>Submit</Button>;
-}
+export const FormSubmit = forwardRef<HTMLButtonElement, ButtonProps>(
+  function FormSubmit(props, ref) {
+    const { className, ...rest } = props;
+    return (
+      <Button {...rest} ref={ref} className={tw(submit, className)}>
+        Submit
+      </Button>
+    );
+  },
+);

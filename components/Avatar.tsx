@@ -18,26 +18,17 @@ const avatar = apply`
   border-gray
 `;
 
-export type AvatarRef = {
-  hello: () => void;
-} | null;
+export default forwardRef<HTMLDivElement, AvatarProps>(
+  function Avatar(props, ref) {
+    const { className } = props;
 
-function Avatar(props: AvatarProps, ref: Ref<AvatarRef>) {
-  const { className } = props;
-  const container = useRef<HTMLDivElement>(null);
-
-  useImperativeHandle(ref, () => ({
-    hello: () => console.log("hello"),
-  }));
-
-  return (
-    <div ref={container} className={tw(avatar, className)}>
-      <img
-        className={tw("absolute inset-0 w-full h-full object-cover")}
-        src="/avatar.jpg"
-      />
-    </div>
-  );
-}
-
-export default forwardRef(Avatar);
+    return (
+      <div ref={ref} className={tw(avatar, className)}>
+        <img
+          className={tw("absolute inset-0 w-full h-full object-cover")}
+          src="/avatar.jpg"
+        />
+      </div>
+    );
+  },
+);
