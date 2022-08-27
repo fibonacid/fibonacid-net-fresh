@@ -1,9 +1,8 @@
 /** @jsx h */
 import { apply, tw } from "@twind";
 import { Fragment, h } from "preact";
-import { useEffect, useLayoutEffect, useRef, useState } from "preact/hooks";
+import { useRef, useState } from "preact/hooks";
 import Avatar from "../components/Avatar.tsx";
-import FadeInList from "../components/FadeInList.tsx";
 import Form, { FormInput, FormSubmit } from "../components/Form.tsx";
 import { MouseCursor } from "../components/MouseCursor.tsx";
 import Spacer from "../components/Spacer.tsx";
@@ -17,7 +16,7 @@ const form = apply`
 `;
 
 const redirect = (word: string) => {
-  const url = new URL(siteUrl);
+  const url = new URL(siteUrl + "/api/login");
   url.searchParams.append("word", word);
   window.location.assign(url);
 };
