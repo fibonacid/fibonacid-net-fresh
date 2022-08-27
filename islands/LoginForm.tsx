@@ -1,15 +1,14 @@
 /** @jsx h */
 import { apply, tw } from "@twind";
-import { h } from "preact";
-import { useRef, useState } from "preact/hooks";
+import { Fragment, h } from "preact";
+import { useEffect, useLayoutEffect, useRef, useState } from "preact/hooks";
 import Avatar from "../components/Avatar.tsx";
-import FadeIn from "../components/FadeIn.tsx";
 import FadeInList from "../components/FadeInList.tsx";
 import Form, { FormInput, FormSubmit } from "../components/Form.tsx";
 import { MouseCursor } from "../components/MouseCursor.tsx";
 import Spacer from "../components/Spacer.tsx";
 import { siteUrl } from "../utils/env.ts";
-import gsap from "../utils/gsap.ts";
+import gsap, { Flip } from "../utils/gsap.ts";
 
 const form = apply`
   flex
@@ -24,63 +23,83 @@ const redirect = (word: string) => {
 };
 
 export default function LoginForm() {
-  const [timeline] = useState(() => gsap.timeline());
   const [word, setWord] = useState<string>();
-  const [showSubmit, setShowSubmit] = useState(false);
+
   const formRef = useRef<HTMLFormElement>(null);
+  const avatarRef = useRef<HTMLDivElement>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
+  const submitRef = useRef<HTMLButtonElement>(null);
+
+  const toggleSubmit = (show: boolean) => {
+    // Collect elements
+    const submit = submitRef.current;
+    const avatar = avatarRef.current;
+    const input = inputRef.current;
+    console.log(show);
+
+    if (submit) {
+      // Capture state
+      const targets = [submit, avatar, input];
+      const state = Flip.getState(targets);
+
+      // Alter state
+      if (show) {
+        submit.classList.remove("hidden");
+      } else {
+        submit.classList.add("hidden");
+      }
+      
+      // Animate
+      Flip.from(state, {
+        absolute: true,
+        onEnter() {
+          gsap.to(submit, { opacity: 1 })
+        },
+        onLeave() {
+          gsap.to(submit, { opacity: 0 })
+        }
+      });
+    }
+  }
 
   return (
-    <Form
-      ref={formRef}
-      className={tw(form)}
-      action="/api/login"
-      onSubmit={(event) => {
-        event.preventDefault();
-        if (word) {
-          gsap.to(formRef.current, {
-            opacity: 0,
-            duration: 0.3,
-            onComplete() {
-              redirect(word);
-            },
-          });
-        }
-      }}
-      onBlur={() => {
-        setShowSubmit(!!word?.length);
-      }}
-    >
-      <MouseCursor />
-      <FadeInList
-        timeline={timeline}
-        vars={{ scale: 0, duration: 0.3 }}
-        position={"-=50%"}
+    <Fragment>
+      {/* <MouseCursor /> */}
+      <Form
+        ref={formRef}
+        className={tw(form)}
+        action="/api/login"
+        onSubmit={(event) => {
+          event.preventDefault();
+          if (word) {
+            gsap.to(formRef.current, {
+              opacity: 0,
+              duration: 0.3,
+              onComplete() {
+                redirect(word);
+              },
+            });
+          }
+        }}
+        onBlur={() => {
+          toggleSubmit(!!word);
+        }}
       >
-        <div>
-          <Avatar />
-          <Spacer className={tw`p-4`} />
-        </div>
-        <div>
-          <FormInput
-            className={tw`block text-center leading-loose w-64`}
-            name="word"
-            type="word"
-            placeholder={`Type anything to enter`}
-            required
-            onChange={(event) => setWord(event.currentTarget.value)}
-            value={word}
-          />
-        </div>
-      </FadeInList>
-      {showSubmit && (
-        <FadeIn
-          timeline={timeline}
-          vars={{ scale: 0, duration: 0.3 }}
-        >
-          <Spacer className={tw`p-2`} />
-          <FormSubmit className={tw`w-full`} />
-        </FadeIn>
-      )}
-    </Form>
+        <Avatar ref={avatarRef} />
+        <Spacer className={tw`p-4`} />
+        <FormInput
+          ref={inputRef}
+          className={tw`block text-center leading-loose w-64`}
+          name="word"
+          type="word"
+          placeholder={`Type anything to enter`}
+          required
+          onChange={(event) => setWord(event.currentTarget.value)}
+          value={word}
+        />
+        <Spacer className={tw`p-2`} />
+        <FormSubmit ref={submitRef} className={tw`w-full hidden opacity-0`} />
+      </Form>
+    </Fragment>
   );
 }
