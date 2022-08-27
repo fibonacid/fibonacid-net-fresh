@@ -1,6 +1,6 @@
 /** @jsx h */
 import { h } from "preact";
-import { useState, useEffect } from "preact/hooks";
+import { useEffect, useState } from "preact/hooks";
 
 export default function Rhyme() {
   const [line, setLine] = useState<string>("Loading...");
