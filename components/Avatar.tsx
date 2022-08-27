@@ -1,7 +1,6 @@
 /** @jsx h */
 import { apply, tw } from "@twind";
-import { useImperativeHandle, useRef } from "preact/hooks";
-import { h, Ref } from "preact";
+import { h } from "preact";
 import { forwardRef } from "preact/compat";
 
 export interface AvatarProps {
