@@ -7,6 +7,7 @@ import Cursor, { CursorProps, CursorRef } from "./Cursor.tsx";
 export type MouseCursorProps = CursorProps;
 
 export function MouseCursor(props: MouseCursorProps) {
+  const { className } = props;
   const ref = useRef<CursorRef>(null);
 
   useEffect(() => {
@@ -26,5 +27,5 @@ export function MouseCursor(props: MouseCursorProps) {
     };
   }, []);
 
-  return <Cursor ref={ref} className={tw(`opacity-0`)} />;
+  return <Cursor {...props} ref={ref} className={tw(`opacity-0 -z-1`, className)} />;
 }

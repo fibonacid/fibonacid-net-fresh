@@ -64,7 +64,7 @@ export default function LoginForm() {
 
   return (
     <Fragment>
-      {/* <MouseCursor /> */}
+      <MouseCursor />
       <Form
         ref={formRef}
         className={tw(form)}

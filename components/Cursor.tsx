@@ -20,6 +20,7 @@ h-[${WIDTH}px]
 border
 border-gray
 rounded-[50%]
+pointer-events-none
 `;
 
 export type CursorRef = {
