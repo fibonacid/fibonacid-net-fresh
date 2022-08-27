@@ -48,19 +48,19 @@ export default function LoginForm() {
       } else {
         submit.classList.add("hidden");
       }
-      
+
       // Animate
       Flip.from(state, {
         absolute: true,
         onEnter() {
-          gsap.to(submit, { opacity: 1 })
+          gsap.to(submit, { opacity: 1 });
         },
         onLeave() {
-          gsap.to(submit, { opacity: 0 })
-        }
+          gsap.to(submit, { opacity: 0 });
+        },
       });
     }
-  }
+  };
 
   return (
     <Fragment>

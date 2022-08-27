@@ -12,7 +12,8 @@ export function MouseCursor(props: MouseCursorProps) {
 
   useEffect(() => {
     let visible = false;
-    const onMouseMove = (event: MouseEvent) => {
+
+    const handleMouseMove = (event: MouseEvent) => {
       const x = event.clientX;
       const y = event.clientY;
       if (!visible) {
@@ -21,11 +22,29 @@ export function MouseCursor(props: MouseCursorProps) {
       }
       ref.current?.move(x, y);
     };
-    self.addEventListener("mousemove", onMouseMove);
+
+    const handleFocusIn = () => {
+      console.log("focus in");
+      ref.current?.to({ scale: 0, opacity: 0 });
+    };
+
+    const handleFocusOut = () => {
+      console.log("focus out");
+      ref.current?.to({ scale: 1, opacity: 1 });
+    };
+
+    self.addEventListener("mousemove", handleMouseMove);
+    self.addEventListener("focusin", handleFocusIn);
+    self.addEventListener("focusout", handleFocusOut);
+
     return () => {
-      self.removeEventListener("mousemove", onMouseMove);
+      self.removeEventListener("mousemove", handleMouseMove);
+      self.removeEventListener("foc1usin", handleFocusIn);
+      self.removeEventListener("focusout", handleFocusOut);
     };
   }, []);
 
-  return <Cursor {...props} ref={ref} className={tw(`opacity-0 -z-1`, className)} />;
+  return (
+    <Cursor {...props} ref={ref} className={tw(`opacity-0 -z-1`, className)} />
+  );
 }
