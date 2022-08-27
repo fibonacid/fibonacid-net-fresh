@@ -21,6 +21,8 @@ border
 border-gray
 rounded-[50%]
 pointer-events-none
+bg-[rgba(0,0,0,0.5)]
+z-10
 `;
 
 export type CursorRef = {
