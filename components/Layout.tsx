@@ -14,6 +14,7 @@ const globalStyles = css({
       color: theme("colors.white"),
       backgroundColor: theme("colors.black"),
       fontFamily: theme("fontFamily.sans"),
+      overflow: "hidden"
     },
   },
 });
