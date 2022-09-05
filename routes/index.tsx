@@ -7,6 +7,7 @@ import Center from "../components/Center.tsx";
 import LoginForm from "../islands/LoginForm.tsx";
 
 export default function Home() {
+  console.log("Hello");
   if (!IS_BROWSER) console.log(Deno.env.toObject());
 
   return (
